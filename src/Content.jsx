@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { MoviesIndex } from "./MoviesIndex";
+import { MoviesNew } from "./MoviesNew";
 
 export function Content() {
   const [movies, setMovies] = useState([]);
@@ -17,6 +18,7 @@ export function Content() {
 
   return (
     <div>
+      <MoviesNew />
       <MoviesIndex movies={movies} />
     </div>
   );
