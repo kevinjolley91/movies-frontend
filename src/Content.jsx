@@ -5,6 +5,7 @@ import { MoviesNew } from "./MoviesNew";
 import { MoviesShow } from "./MoviesShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
+import { LogoutLink } from "./Logout";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -44,6 +45,7 @@ export function Content() {
   return (
     <div>
       <Login />
+      <LogoutLink />
       <Signup />
       <MoviesNew onCreateMovie={handleCreateMovie} />
       <MoviesIndex movies={movies} onShowMovie={handleShowMovie} />
