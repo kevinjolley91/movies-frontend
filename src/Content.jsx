@@ -10,6 +10,7 @@ import { Modal } from "./Modal";
 
 export function Content() {
   const [movies, setMovies] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [isMoviesShowVisible, setIsMoviesShowVisibile] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
 
