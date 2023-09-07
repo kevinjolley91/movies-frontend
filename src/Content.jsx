@@ -12,6 +12,7 @@ export function Content() {
   const [movies, setMovies] = useState([]);
   const [isMoviesShowVisible, setIsMoviesShowVisibile] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
+  const [favorites, setFavorites] = useState([]);
 
   const handleIndexMovies = () => {
     console.log("handleIndexMovies");
@@ -26,6 +27,13 @@ export function Content() {
     axios.post("http://localhost:3000/movies.json", params).then((response) => {
       setMovies([...movies, response.data]);
       successCallback();
+    });
+  };
+
+  const handleCreateFavorite = (params) => {
+    console.log("handleCreateFavorite", params);
+    axios.post("http://localhost:3000/favorites.json", params).then((response) => {
+      setFavorites([...favorites, response.data]);
     });
   };
 
@@ -50,7 +58,8 @@ export function Content() {
       <MoviesNew onCreateMovie={handleCreateMovie} />
       <MoviesIndex movies={movies} onShowMovie={handleShowMovie} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
-        <MoviesShow movie={currentMovie} />
+        <MoviesShow movie={currentMovie} onCreateFavorite={handleCreateFavorite} />
+        <button onClick={() => handleCreateFavorite(currentMovie)}>Add to Favorites</button>
       </Modal>
     </div>
   );
