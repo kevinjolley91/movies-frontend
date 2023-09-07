@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
-  axios.defaults.headers.common["Authorization"] = "Bearer ${jwt}";
+  axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 }
 
 export function Login() {
@@ -20,7 +20,7 @@ export function Login() {
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/";
+        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
       })
       .catch((error) => {
         console.log(error.response);
@@ -32,9 +32,9 @@ export function Login() {
     <div id="login">
       <h1>Login</h1>
       <ul>
-        {errors.map((error) => {
-          <li key={error}>{error}</li>;
-        })}
+        {errors.map((error) => (
+          <li key={error}>{error}</li>
+        ))}
       </ul>
       <form onSubmit={handleSubmit}>
         <div>

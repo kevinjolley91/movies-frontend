@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState } from "react";
 
@@ -12,13 +11,13 @@ export function Signup() {
     axios
       .post("http://localhost:3000/users.json", params)
       .then((response) => {
-        console.log("response.data");
+        console.log(response.data);
         event.target.reset();
-        window.location.href = "/";
+        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
       })
       .catch((error) => {
-        console.log(error.response.errors);
-        setErrors(errors.response.errors);
+        console.log(error.response.data.errors);
+        setErrors(error.response.data.errors);
       });
   };
 
@@ -32,19 +31,16 @@ export function Signup() {
       </ul>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input type="text" name="name" />
+          Name: <input name="name" type="text" />
         </div>
         <div>
-          Email: <input type="email" name="email" />
+          Email: <input name="email" type="email" />
         </div>
         <div>
-          Password: <input type="password" name="password" />
+          Password: <input name="password" type="password" />
         </div>
         <div>
-          Password Confirmation: <input type="password" name="password_confirmation" />
-        </div>
-        <div>
-          Image Url: <input type="text" name="image_url" />
+          Password confirmation: <input name="password_confirmation" type="password" />
         </div>
         <button type="submit">Signup</button>
       </form>

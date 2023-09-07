@@ -15,12 +15,11 @@ export function MoviesShow(props) {
   return (
     <div>
       <h1>Movie Information</h1>
-      <p>Name: {props.movie.name}</p>
+      <h3>{props.movie.name}</h3>
       <img src={props.movie.image_url} width="150" height="225" alt={props.movie.name} />
-      <p>Description: {props.movie.description}</p>
+      <p>{props.movie.description}</p>
       <p>Category: {props.movie.category}</p>
-      <p>id: {props.movie.id}</p>
-      <button onClick={handleCreateFavorite(props.movie.id)}>Add to Favorites</button>
+      <button onClick={() => handleCreateFavorite(props.movie.id)}>Add to Favorites</button>
     </div>
   );
 }
