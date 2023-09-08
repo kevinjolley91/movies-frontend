@@ -30,10 +30,9 @@ export function Content() {
     });
   };
 
-  const handleCreateFavorite = (event) => {
-    event.preventDefault;
-    console.log("handleCreateFavorite", event);
-    axios.post("http://localhost:3000/favorites.json", event).then((response) => {
+  const handleCreateFavorite = (params) => {
+    console.log("handleCreateFavorite", params);
+    axios.post("http://localhost:3000/favorites.json", params).then((response) => {
       setFavorites([...favorites, response.data]);
     });
   };
@@ -59,7 +58,7 @@ export function Content() {
       <MoviesNew onCreateMovie={handleCreateMovie} />
       <MoviesIndex movies={movies} onShowMovie={handleShowMovie} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
-        <MoviesShow movie={currentMovie} onCreateFavorite={handleCreateFavorite} />
+        <MoviesShow movie={currentMovie} />
         <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
       </Modal>
     </div>
