@@ -59,7 +59,7 @@ export function Content() {
       <MoviesIndex movies={movies} onShowMovie={handleShowMovie} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
         <MoviesShow movie={currentMovie} onCreateFavorite={handleCreateFavorite} />
-        <button onClick={() => handleCreateFavorite(currentMovie)}>Add to Favorites</button>
+        <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
       </Modal>
     </div>
   );
