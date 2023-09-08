@@ -33,7 +33,7 @@ export function Content() {
   const handleCreateFavorite = (event) => {
     event.preventDefault;
     console.log("handleCreateFavorite", event);
-    axios.post("http://localhost:3000/toggle_favorite", event).then((response) => {
+    axios.post("http://localhost:3000/favorites.json", event).then((response) => {
       setFavorites([...favorites, response.data]);
     });
   };
