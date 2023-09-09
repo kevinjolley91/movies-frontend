@@ -42,14 +42,12 @@ export function Content() {
       .catch((error) => console.error("Error creating favorite:", error));
   };
 
-  const handleRemoveFavorite = (params) => {
+  const handleRemoveFavorite = (movieId) => {
     console.log("handleRemoveFavorite");
-    console.log("Received parameter", params);
+    console.log("Received parameter", movieId);
+    const data = { movie_id: movieId };
     axios
-      .delete(`http://localhost:3000/favorites.json`)
-      .then((response) => {
-        setFavorites([...favorites, response.data]);
-      })
+      .delete("http://localhost:3000/favorites.json", { data: data })
       .catch((error) => console.error("Error deleting favorite:", error));
   };
 
@@ -75,12 +73,8 @@ export function Content() {
       <MoviesIndex movies={movies} onShowMovie={handleShowMovie} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
         <MoviesShow movie={currentMovie} />
-        <button key="movie_id" onClick={() => handleCreateFavorite(currentMovie.id)}>
-          Add to Favorites
-        </button>
-        <button key="movieId" onClick={() => handleRemoveFavorite(currentMovie.id)}>
-          Remove from Favorites
-        </button>
+        <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
+        <button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button>
       </Modal>
     </div>
   );
