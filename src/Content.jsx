@@ -13,6 +13,7 @@ export function Content() {
   const [isMoviesShowVisible, setIsMoviesShowVisibile] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
   const [favorites, setFavorites] = useState([]);
+  const [userFavorites, setUserFavorites] = useState([]);
 
   const handleIndexMovies = () => {
     console.log("handleIndexMovies");
@@ -64,6 +65,12 @@ export function Content() {
 
   useEffect(handleIndexMovies, []);
 
+  useEffect(() => {
+    axios.get("http://localhost:3000/favorites.json").then((response) => {
+      setUserFavorites(response.data);
+    });
+  }, []);
+
   return (
     <div>
       <Login />
@@ -73,9 +80,17 @@ export function Content() {
       <MoviesIndex movies={movies} onShowMovie={handleShowMovie} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
         <MoviesShow movie={currentMovie} />
-        <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
-        <button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button>
+        {userFavorites.some((favorite) => favorite.movie_id === currentMovie.id) ? (
+          <button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button>
+        ) : (
+          <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
+        )}
       </Modal>
     </div>
   );
+}
+
+{
+  /* <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
+<button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button> */
 }
