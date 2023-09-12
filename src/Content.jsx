@@ -50,7 +50,6 @@ export function Content() {
         setFavorites([...favorites, response.data]);
       })
       .catch((error) => console.error("Error creating favorite:", error));
-    window.location.reload(false);
   };
 
   const handleRemoveFavorite = (movieId) => {
@@ -60,7 +59,6 @@ export function Content() {
     axios
       .delete("http://localhost:3000/favorites.json", { data: data })
       .catch((error) => console.error("Error deleting favorite:", error));
-    window.location.reload(false);
   };
 
   const handleShowMovie = (movie) => {
@@ -77,6 +75,12 @@ export function Content() {
   useEffect(handleIndexMovies, []);
 
   useEffect(handleIndexFavorites, []);
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:3000/favorites.json").then((response) => {
+  //     setUserFavorites(response.data);
+  //   });
+  // }, []);
 
   return (
     <div>
