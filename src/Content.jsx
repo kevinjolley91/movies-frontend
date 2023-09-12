@@ -6,6 +6,7 @@ import { MoviesShow } from "./MoviesShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./Logout";
+import { FavoritesIndex } from "./FavoritesIndex";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -20,6 +21,14 @@ export function Content() {
     axios.get("http://localhost:3000/movies.json").then((response) => {
       console.log(response.data);
       setMovies(response.data);
+    });
+  };
+
+  const handleIndexFavorites = () => {
+    console.log("handleIndexFavorites");
+    axios.get("http://localhost:3000/favorites.son").then((response) => {
+      console.log(response.data);
+      setUserFavorites(response.data);
     });
   };
 
@@ -41,6 +50,7 @@ export function Content() {
         setFavorites([...favorites, response.data]);
       })
       .catch((error) => console.error("Error creating favorite:", error));
+    window.location.reload(false);
   };
 
   const handleRemoveFavorite = (movieId) => {
@@ -50,6 +60,7 @@ export function Content() {
     axios
       .delete("http://localhost:3000/favorites.json", { data: data })
       .catch((error) => console.error("Error deleting favorite:", error));
+    window.location.reload(false);
   };
 
   const handleShowMovie = (movie) => {
@@ -65,11 +76,7 @@ export function Content() {
 
   useEffect(handleIndexMovies, []);
 
-  useEffect(() => {
-    axios.get("http://localhost:3000/favorites.json").then((response) => {
-      setUserFavorites(response.data);
-    });
-  }, []);
+  useEffect(handleIndexFavorites, []);
 
   return (
     <div>
@@ -86,11 +93,7 @@ export function Content() {
           <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
         )}
       </Modal>
+      <FavoritesIndex userFavorites={userFavorites} />
     </div>
   );
-}
-
-{
-  /* <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
-<button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button> */
 }
