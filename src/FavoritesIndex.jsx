@@ -5,7 +5,8 @@ export function FavoritesIndex(props) {
       <h1>Your Favorites</h1>
       {props.userFavorites.map((userFavorite) => (
         <div key={userFavorite.id}>
-          <h2>{userFavorite.movie_id}</h2>
+          <h2>{userFavorite.movie.name}</h2>
+          <p>{userFavorite.movie.description}</p>
         </div>
       ))}
     </div>
