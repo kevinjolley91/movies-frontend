@@ -5,9 +5,10 @@ import { MoviesNew } from "./MoviesNew";
 import { MoviesShow } from "./MoviesShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
-import { LogoutLink } from "./Logout";
 import { FavoritesIndex } from "./FavoritesIndex";
 import { Modal } from "./Modal";
+import { Routes, Route } from "react-router-dom";
+import { About } from "./About";
 
 export function Content() {
   const [movies, setMovies] = useState([]);
@@ -76,19 +77,19 @@ export function Content() {
 
   useEffect(handleIndexFavorites, []);
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:3000/favorites.json").then((response) => {
-  //     setUserFavorites(response.data);
-  //   });
-  // }, []);
-
   return (
-    <div>
-      <Login />
-      <LogoutLink />
-      <Signup />
-      <MoviesNew onCreateMovie={handleCreateMovie} />
-      <MoviesIndex movies={movies} onShowMovie={handleShowMovie} />
+    <div className="container" id="content-component">
+      <Routes>
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/movies/new" element={<MoviesNew onCreateMovie={handleCreateMovie} />} />
+        <Route path="/" element={<MoviesIndex movies={movies} onShowMovie={handleShowMovie} />} />
+        <Route
+          path="/favorites/index"
+          element={<FavoritesIndex userFavorites={userFavorites} onShowMovie={handleShowMovie} />}
+        />
+      </Routes>
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
         <MoviesShow movie={currentMovie} />
         {userFavorites.some((favorite) => favorite.movie_id === currentMovie.id) ? (
@@ -97,7 +98,6 @@ export function Content() {
           <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
         )}
       </Modal>
-      <FavoritesIndex userFavorites={userFavorites} onShowMovie={handleShowMovie} />
     </div>
   );
 }

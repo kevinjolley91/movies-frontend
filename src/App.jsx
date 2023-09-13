@@ -1,13 +1,18 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
 import { Header } from "./Header";
-import { Content } from "./Content";
 import { Footer } from "./Footer";
+import { Content } from "./Content";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Content />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Content />
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
