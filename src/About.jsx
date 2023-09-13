@@ -10,7 +10,7 @@ export function About() {
         <Marker width={50} anchor={[41.3978, -79.8314]} />
       </Map>
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=91iFG23LKgw&ab_channel=CrazyManSports"
+        url="https://www.youtube.com/watch?v=qEVUtrk8_B4&ab_channel=LionsgateMovies"
         volume="0.1"
         muted="false"
         playing="true"
