@@ -6,7 +6,7 @@ export function FavoritesIndex(props) {
       {props.userFavorites.map((userFavorite) => (
         <div key={userFavorite.id}>
           <h2>{userFavorite.movie.name}</h2>
-          <p>{userFavorite.movie.description}</p>
+          <button onClick={() => props.onShowMovie(userFavorite.movie)}>More info</button>
         </div>
       ))}
     </div>

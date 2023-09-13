@@ -97,7 +97,7 @@ export function Content() {
           <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
         )}
       </Modal>
-      <FavoritesIndex userFavorites={userFavorites} />
+      <FavoritesIndex userFavorites={userFavorites} onShowMovie={handleShowMovie} />
     </div>
   );
 }
