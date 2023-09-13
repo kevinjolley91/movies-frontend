@@ -6,6 +6,8 @@ export function MoviesIndex(props) {
       {props.movies.map((movie) => (
         <div key={movie.id}>
           <h2>{movie.name}</h2>
+          <img src={movie.image_url} width="200" height="300" alt={movie.name} />
+          <br />
           <button onClick={() => props.onShowMovie(movie)}>More info</button>
         </div>
       ))}

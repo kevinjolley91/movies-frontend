@@ -1,3 +1,12 @@
+#root {
+  font-family: Papyrus, fantasy; 
+  font-size: 18px; 
+  font-style: normal; 
+  font-variant: normal;
+  color: rgb(1, 8, 58);
+  background-image: url(assets/concrete_seamless.webp);
+}
+
 html {
   scroll-behavior: smooth;
 }

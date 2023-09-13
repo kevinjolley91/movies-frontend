@@ -4,13 +4,13 @@ import ReactPlayer from "react-player/youtube";
 export function About() {
   return (
     <div>
-      <h1>About</h1>
-      <p>We accept donations in bacon.</p>
+      <h1>About Movies List</h1>
+      <h2>The Better IMDB</h2>
       <Map height={300} defaultCenter={[41.3978, -79.8314]} defaultZoom={11}>
         <Marker width={50} anchor={[41.3978, -79.8314]} />
       </Map>
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+        url="https://www.youtube.com/watch?v=91iFG23LKgw&ab_channel=CrazyManSports"
         volume="0.1"
         muted="false"
         playing="true"

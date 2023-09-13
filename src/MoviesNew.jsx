@@ -11,16 +11,24 @@ export function MoviesNew(props) {
       <h1>New Movie</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input name="name" type="text" />
+          Name:
+          <br />
+          <input name="name" type="text" />
         </div>
         <div>
-          Image Url: <input name="image_url" type="text" />
+          Image Url:
+          <br />
+          <input name="image_url" type="text" />
         </div>
         <div>
-          Description: <input name="description" type="text" />
+          Description:
+          <br />
+          <input name="description" type="text" />
         </div>
         <div>
-          Category: <input name="category" type="text" />
+          Category:
+          <br />
+          <input name="category" type="text" />
         </div>
         <button type="submit">Create Movie</button>
       </form>
