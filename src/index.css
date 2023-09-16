@@ -10,3 +10,14 @@
 html {
   scroll-behavior: smooth;
 }
+
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  width: 25%;
+  margin-bottom: 20px;
+}
