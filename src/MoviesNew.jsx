@@ -4,6 +4,7 @@ export function MoviesNew(props) {
     event.preventDefault();
     const params = new FormData(event.target);
     props.onCreateMovie(params, () => event.target.reset());
+    window.location.reload();
   };
 
   return (
