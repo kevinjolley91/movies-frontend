@@ -11,13 +11,12 @@ html {
   scroll-behavior: smooth;
 }
 
-.card-group {
+.card-deck {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .card {
-  width: 30%;
   margin-bottom: 20px;
 }
