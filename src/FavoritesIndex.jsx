@@ -3,7 +3,7 @@ export function FavoritesIndex(props) {
   return (
     <div>
       <h1>Your Favorites</h1>
-      <div className="card-group">
+      <div className="card-deck">
         {props.userFavorites.map((userFavorite) => (
           <div key={userFavorite.id} className="card">
             <img
