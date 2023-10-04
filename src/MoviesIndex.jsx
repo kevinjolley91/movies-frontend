@@ -19,7 +19,6 @@ export function MoviesIndex(props) {
           .filter((movie) => movie.name.toLowerCase().includes(searchFilter.toLowerCase()))
           .map((movie) => (
             <div key={movie.id} className="card">
-              <br />
               <img className="card-img-top" src={movie.image_url} width="200" height="300" alt={movie.name} />
               <div className="card-body">
                 <h5 className="card-title">{movie.name}</h5>
