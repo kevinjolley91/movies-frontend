@@ -14,6 +14,8 @@ export function MoviesIndex(props) {
           <option key={movie.id} value={movie.name} />
         ))}
       </datalist>
+      <br />
+      <br />
       <div className="card-deck">
         {props.movies
           .filter((movie) => movie.name.toLowerCase().includes(searchFilter.toLowerCase()))
