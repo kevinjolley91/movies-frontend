@@ -8,14 +8,14 @@ export function FavoritesIndex(props) {
           <div key={userFavorite.id} className="card">
             <img
               className="card-img-top"
-              src={userFavorite.movie.image_url}
+              src={"https://image.tmdb.org/t/p/original/" + props.movie.poster_path}
               width="200"
               height="300"
-              alt={userFavorite.movie.name}
+              alt={props.movie.title}
             />
             <div className="card-body">
-              <h2 className="card-title">{userFavorite.movie.name}</h2>
-              <button onClick={() => props.onShowMovie(userFavorite.movie)}>More info</button>
+              <h2 className="card-title">{props.movie.title}</h2>
+              <button onClick={() => props.onShowMovie(props.movie)}>More info</button>
             </div>
           </div>
         ))}

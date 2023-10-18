@@ -29,7 +29,7 @@ export function MoviesIndex(props) {
                 alt={movie.title}
               />
               <div className="card-body">
-                <h5 className="card-title">{movie.title}</h5>
+                <h4 className="card-title">{movie.title}</h4>
                 <button onClick={() => props.onShowMovie(movie)}>More info</button>
               </div>
             </div>

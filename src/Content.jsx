@@ -51,7 +51,7 @@ export function Content() {
         setFavorites([...favorites, response.data]);
       })
       .catch((error) => console.error("Error creating favorite:", error));
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleRemoveFavorite = (movieId) => {
