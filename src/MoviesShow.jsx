@@ -13,6 +13,7 @@ export function MoviesShow(props) {
       />
       <h4>Release Date: {props.movie.release_date}</h4>
       <h4>{props.movie.overview}</h4>
+      <h4>{props.movie.id}</h4>
     </div>
   );
 }
