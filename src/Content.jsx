@@ -41,10 +41,16 @@ export function Content() {
     });
   };
 
-  const handleCreateFavorite = (movieId) => {
+  const handleCreateFavorite = (params) => {
     console.log("handleCreateFavorite");
-    console.log("Received parameter", movieId);
-    const data = { movie_id: movieId };
+    console.log("Received parameter", params);
+    const data = {
+      movie_id: currentMovie.id,
+      movie_title: currentMovie.title,
+      movie_poster_path: currentMovie.poster_path,
+      movie_overview: currentMovie.overview,
+      movie_release_date: currentMovie.release_date,
+    };
     axios
       .post("http://localhost:3000/favorites.json", data)
       .then((response) => {
