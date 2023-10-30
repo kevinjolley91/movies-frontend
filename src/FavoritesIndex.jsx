@@ -4,18 +4,18 @@ export function FavoritesIndex(props) {
     <div>
       <h1>Your Favorites</h1>
       <div className="card-deck">
-        {props.userFavorites.map((userFavorite) => (
-          <div key={userFavorite.id} className="card">
+        {props.favorites.map((favorite) => (
+          <div key={favorite.id} className="card">
             <img
               className="card-img-top"
-              src={"https://image.tmdb.org/t/p/original/" + props.movie.poster_path}
+              src={"https://image.tmdb.org/t/p/original/" + props.favorite.movie_poster_path}
               width="200"
               height="300"
-              alt={props.movie.title}
+              alt={props.favorite.movie_title}
             />
             <div className="card-body">
-              <h2 className="card-title">{props.movie.title}</h2>
-              <button onClick={() => props.onShowMovie(props.movie)}>More info</button>
+              <h2 className="card-title">{props.favorite.movie_title}</h2>
+              <button onClick={() => props.onShowMovie(props.favorite)}>More info</button>
             </div>
           </div>
         ))}

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { MoviesIndex } from "./MoviesIndex";
@@ -15,7 +16,6 @@ export function Content() {
   const [isMoviesShowVisible, setIsMoviesShowVisibile] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
   const [favorites, setFavorites] = useState([]);
-  const [userFavorites, setUserFavorites] = useState([]);
 
   const handleIndexMovies = () => {
     console.log("handleIndexMovies");
@@ -29,7 +29,7 @@ export function Content() {
     console.log("handleIndexFavorites");
     axios.get("http://localhost:3000/favorites.son").then((response) => {
       console.log(response.data);
-      setUserFavorites(response.data);
+      setFavorites(response.data);
     });
   };
 
@@ -66,8 +66,10 @@ export function Content() {
     const data = { movie_id: movieId };
     axios
       .delete("http://localhost:3000/favorites.json", { data: data })
+      .then((response) => {
+        setFavorites(favorites.filter((favorite) => favorite.movie_id !== movieId));
+      })
       .catch((error) => console.error("Error deleting favorite:", error));
-    window.location.reload();
   };
 
   const handleShowMovie = (movie) => {
@@ -91,19 +93,19 @@ export function Content() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/movies/new" element={<MoviesNew onCreateMovie={handleCreateMovie} />} />
+        {/* <Route path="/movies/new" element={<MoviesNew onCreateMovie={handleCreateMovie} />} /> */}
         <Route path="/" element={<MoviesIndex movies={movies} onShowMovie={handleShowMovie} />} />
         <Route
           path="/favorites/index"
-          element={<FavoritesIndex userFavorites={userFavorites} onShowMovie={handleShowMovie} />}
+          element={<FavoritesIndex favorites={favorites} onShowMovie={handleShowMovie} />}
         />
       </Routes>
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
         <MoviesShow movie={currentMovie} />
-        {userFavorites.some((favorite) => favorite.movie_id === currentMovie.id) ? (
+        {favorites.some((favorite) => favorite.movie_id == currentMovie.id) ? (
           <button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button>
         ) : (
-          <button onClick={() => handleCreateFavorite(currentMovie.id)}>Add to Favorites</button>
+          <button onClick={() => handleCreateFavorite(currentMovie)}>Add to Favorites</button>
         )}
       </Modal>
     </div>
