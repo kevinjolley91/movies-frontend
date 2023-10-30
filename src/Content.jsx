@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { MoviesIndex } from "./MoviesIndex";
@@ -57,7 +56,7 @@ export function Content() {
         setFavorites([...favorites, response.data]);
       })
       .catch((error) => console.error("Error creating favorite:", error));
-    // window.location.reload();
+    window.location.reload();
   };
 
   const handleRemoveFavorite = (movieId) => {
@@ -66,10 +65,8 @@ export function Content() {
     const data = { movie_id: movieId };
     axios
       .delete("http://localhost:3000/favorites.json", { data: data })
-      .then((response) => {
-        setFavorites(favorites.filter((favorite) => favorite.movie_id !== movieId));
-      })
       .catch((error) => console.error("Error deleting favorite:", error));
+    window.location.reload();
   };
 
   const handleShowMovie = (movie) => {
@@ -93,7 +90,7 @@ export function Content() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* <Route path="/movies/new" element={<MoviesNew onCreateMovie={handleCreateMovie} />} /> */}
+        <Route path="/movies/new" element={<MoviesNew onCreateMovie={handleCreateMovie} />} />
         <Route path="/" element={<MoviesIndex movies={movies} onShowMovie={handleShowMovie} />} />
         <Route
           path="/favorites/index"
