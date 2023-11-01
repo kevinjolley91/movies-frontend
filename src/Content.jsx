@@ -14,6 +14,7 @@ export function Content() {
   const [isMoviesShowVisible, setIsMoviesShowVisibile] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
   const [favorites, setFavorites] = useState([]);
+  const [currentFavorite, setCurrentFavorite] = useState({});
 
   const handleIndexMovies = () => {
     console.log("handleIndexMovies");
@@ -33,7 +34,7 @@ export function Content() {
 
   const handleIndexFavorites = () => {
     console.log("handleIndexFavorites");
-    axios.get("http://localhost:3000/favorites.son").then((response) => {
+    axios.get("http://localhost:3000/favorites.json").then((response) => {
       console.log(response.data);
       setFavorites(response.data);
     });
@@ -55,7 +56,7 @@ export function Content() {
         setFavorites([...favorites, response.data]);
       })
       .catch((error) => console.error("Error creating favorite:", error));
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleRemoveFavorite = (movieId) => {
@@ -65,13 +66,17 @@ export function Content() {
     axios
       .delete("http://localhost:3000/favorites.json", { data: data })
       .catch((error) => console.error("Error deleting favorite:", error));
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleShowMovie = (movie) => {
     console.log("handleShowMovie", movie);
+    if (favorites.some((favorite) => favorite.movie_id === movie.id)) {
+      setCurrentFavorite(movie);
+    } else {
+      setCurrentMovie(movie);
+    }
     setIsMoviesShowVisibile(true);
-    setCurrentMovie(movie);
   };
 
   const handleClose = () => {
@@ -110,11 +115,18 @@ export function Content() {
         />
       </Routes>
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
-        <MoviesShow movie={currentMovie} />
-        {favorites.some((favorite) => favorite.movie_id == currentMovie.id) ? (
-          <button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button>
+        {currentFavorite.id ? (
+          <>
+            <h2>Favorite Movie Details</h2>
+            <MoviesShow movie={currentFavorite} />
+            <button onClick={() => handleRemoveFavorite(currentFavorite.id)}>Remove from Favorites</button>
+          </>
         ) : (
-          <button onClick={() => handleCreateFavorite(currentMovie)}>Add to Favorites</button>
+          <>
+            <h2>Movie Details</h2>
+            <MoviesShow movie={currentMovie} />
+            <button onClick={() => handleCreateFavorite(currentMovie)}>Add to Favorites</button>
+          </>
         )}
       </Modal>
     </div>
