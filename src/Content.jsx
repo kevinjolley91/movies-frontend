@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { MoviesIndex } from "./MoviesIndex";
-import { MoviesNew } from "./MoviesNew";
+// import { MoviesNew } from "./MoviesNew";
 import { MoviesShow } from "./MoviesShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
@@ -9,6 +9,7 @@ import { FavoritesIndex } from "./FavoritesIndex";
 import { Modal } from "./Modal";
 import { Routes, Route } from "react-router-dom";
 import { About } from "./About";
+import { Search } from "./Search";
 
 export function Content() {
   const [movies, setMovies] = useState([]);
@@ -32,13 +33,13 @@ export function Content() {
     });
   };
 
-  const handleCreateMovie = (params, successCallback) => {
-    console.log("handleCreateMovie", params);
-    axios.post("http://localhost:3000/movies.json", params).then((response) => {
-      setMovies([...movies, response.data]);
-      successCallback();
-    });
-  };
+  // const handleCreateMovie = (params, successCallback) => {
+  //   console.log("handleCreateMovie", params);
+  //   axios.post("http://localhost:3000/movies.json", params).then((response) => {
+  //     setMovies([...movies, response.data]);
+  //     successCallback();
+  //   });
+  // };
 
   const handleCreateFavorite = (params) => {
     console.log("handleCreateFavorite");
@@ -90,7 +91,8 @@ export function Content() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/movies/new" element={<MoviesNew onCreateMovie={handleCreateMovie} />} />
+        <Route path="/search" element={<Search />} />
+        {/* <Route path="/movies/new" element={<MoviesNew onCreateMovie={handleCreateMovie} />} /> */}
         <Route path="/" element={<MoviesIndex movies={movies} onShowMovie={handleShowMovie} />} />
         <Route
           path="/favorites/index"
