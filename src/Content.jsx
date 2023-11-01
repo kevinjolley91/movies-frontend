@@ -23,6 +23,14 @@ export function Content() {
     });
   };
 
+  const handleSearchMovies = (params) => {
+    console.log("handleSearchMovies", params);
+    axios.get("http://localhost:3000/movies/search/" + params).then((response) => {
+      console.log(response.data.results);
+      setMovies(response.data.results);
+    });
+  };
+
   const handleIndexFavorites = () => {
     console.log("handleIndexFavorites");
     axios.get("http://localhost:3000/favorites.son").then((response) => {
@@ -77,6 +85,20 @@ export function Content() {
 
   return (
     <div className="container" id="content-component">
+      <div>
+        <h1>Search:</h1>
+        <input name="query" type="text" />
+        <button
+          onClick={() => {
+            const inputElement = document.querySelector('input[name="query"]');
+            const query = inputElement.value;
+            handleSearchMovies(query);
+          }}
+        >
+          Search
+        </button>
+      </div>
+      <br />
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />

@@ -3,7 +3,6 @@
 export function MoviesIndex(props) {
   return (
     <div id="movies-index">
-      <h1>All Movies</h1>
       <div className="card-deck">
         {props.movies.map((movie) => (
           <div key={movie.id} className="card">
