@@ -14,7 +14,6 @@ export function Content() {
   const [isMoviesShowVisible, setIsMoviesShowVisibile] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
   const [favorites, setFavorites] = useState([]);
-  const [currentFavorite, setCurrentFavorite] = useState({});
 
   const handleIndexMovies = () => {
     console.log("handleIndexMovies");
@@ -45,10 +44,10 @@ export function Content() {
     console.log("Received parameter", params);
     const data = {
       movie_id: currentMovie.id,
-      movie_title: currentMovie.title,
-      movie_poster_path: currentMovie.poster_path,
-      movie_overview: currentMovie.overview,
-      movie_release_date: currentMovie.release_date,
+      title: currentMovie.title,
+      poster_path: currentMovie.poster_path,
+      overview: currentMovie.overview,
+      release_date: currentMovie.release_date,
     };
     axios
       .post("http://localhost:3000/favorites.json", data)
@@ -56,38 +55,29 @@ export function Content() {
         setFavorites([...favorites, response.data]);
       })
       .catch((error) => console.error("Error creating favorite:", error));
-    // window.location.reload();
+    window.location.reload();
   };
 
   const handleRemoveFavorite = (movieId) => {
     console.log("handleRemoveFavorite");
     console.log("Received parameter", movieId);
-    const data = { movie_id: movieId };
+    const data = { id: movieId };
     axios
       .delete("http://localhost:3000/favorites.json", { data: data })
       .catch((error) => console.error("Error deleting favorite:", error));
-    // window.location.reload();
+    window.location.reload();
   };
 
   const handleShowMovie = (movie) => {
     console.log("handleShowMovie", movie);
-    console.log(movies, favorites);
-
-    const isFavorite = favorites.some((favorite) => favorite.movie_id === movie.id);
-
-    if (isFavorite) {
-      console.log("This is a favorite");
-      setCurrentFavorite(movie);
-    } else {
-      console.log("This is not a favorite");
-      setCurrentMovie(movie);
-    }
+    setCurrentMovie(movie);
     setIsMoviesShowVisibile(true);
   };
 
   function handleClose() {
     console.log("handleClose");
     setIsMoviesShowVisibile(false);
+    setCurrentMovie({});
   }
 
   useEffect(handleIndexMovies, []);
@@ -121,19 +111,14 @@ export function Content() {
         />
       </Routes>
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
-        {currentFavorite.movie_id ? (
-          <>
-            <h2>Favorite Movie Details</h2>
-            <MoviesShow favorite={currentFavorite} />
-            <button onClick={() => handleRemoveFavorite(currentFavorite.id)}>Remove from Favorites</button>
-          </>
-        ) : (
-          <>
-            <h2>Movie Details</h2>
-            <MoviesShow movie={currentMovie} />
+        <>
+          <MoviesShow movie={currentMovie} />
+          {favorites.find((favorite) => favorite.movie_id === currentMovie.movie_id) ? (
+            <button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button>
+          ) : (
             <button onClick={() => handleCreateFavorite(currentMovie)}>Add to Favorites</button>
-          </>
-        )}
+          )}
+        </>
       </Modal>
     </div>
   );
