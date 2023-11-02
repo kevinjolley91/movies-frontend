@@ -71,18 +71,24 @@ export function Content() {
 
   const handleShowMovie = (movie) => {
     console.log("handleShowMovie", movie);
-    if (favorites.some((favorite) => favorite.movie_id === movie.id)) {
+    console.log(movies, favorites);
+
+    const isFavorite = favorites.some((favorite) => favorite.movie_id === movie.id);
+
+    if (isFavorite) {
+      console.log("This is a favorite");
       setCurrentFavorite(movie);
     } else {
+      console.log("This is not a favorite");
       setCurrentMovie(movie);
     }
     setIsMoviesShowVisibile(true);
   };
 
-  const handleClose = () => {
+  function handleClose() {
     console.log("handleClose");
     setIsMoviesShowVisibile(false);
-  };
+  }
 
   useEffect(handleIndexMovies, []);
 
@@ -115,7 +121,7 @@ export function Content() {
         />
       </Routes>
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
-        {currentFavorite.id ? (
+        {currentFavorite.movie_id ? (
           <>
             <h2>Favorite Movie Details</h2>
             <MoviesShow movie={currentFavorite} />
