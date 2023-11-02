@@ -124,7 +124,7 @@ export function Content() {
         {currentFavorite.movie_id ? (
           <>
             <h2>Favorite Movie Details</h2>
-            <MoviesShow movie={currentFavorite} />
+            <MoviesShow favorite={currentFavorite} />
             <button onClick={() => handleRemoveFavorite(currentFavorite.id)}>Remove from Favorites</button>
           </>
         ) : (

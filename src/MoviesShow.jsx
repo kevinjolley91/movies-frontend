@@ -6,15 +6,15 @@ export function MoviesShow(props) {
     if (favorite) {
       return (
         <div>
-          <h1>{movie.movie_title}</h1>
+          <h1>{favorite.title}</h1>
           <img
-            src={"https://image.tmdb.org/t/p/original/" + movie.movie_poster_path}
+            src={"https://image.tmdb.org/t/p/original/" + favorite.poster_path}
             width="300"
             height="450"
-            alt={movie.movie_title}
+            alt={favorite.title}
           />
-          <h4>Release Date: {movie.movie_release_date}</h4>
-          <h4>{movie.movie_overview}</h4>
+          <h4>Release Date: {favorite.release_date}</h4>
+          <h4>{favorite.overview}</h4>
         </div>
       );
     } else {
