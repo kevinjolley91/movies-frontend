@@ -42,6 +42,13 @@ export function Content() {
     });
   };
 
+  const showFavoriteAddedMessage = () => {
+    setIsFavoriteAddedMessageVisible(true);
+    setTimeout(() => {
+      setIsFavoriteAddedMessageVisible(false);
+    }, 3000);
+  };
+
   const handleCreateFavorite = (params) => {
     console.log("handleCreateFavorite");
     console.log("Received parameter", params);
@@ -56,9 +63,10 @@ export function Content() {
       .post("http://localhost:3000/favorites.json", data)
       .then((response) => {
         setFavorites([...favorites, response.data]);
+        showFavoriteAddedMessage();
       })
       .catch((error) => console.error("Error creating favorite:", error));
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleRemoveFavorite = (movieId) => {
@@ -89,20 +97,6 @@ export function Content() {
 
   return (
     <div className="container" id="content-component">
-      {/* <div>
-        <h1>Search:</h1>
-        <input name="query" type="text" />
-        <button
-          onClick={() => {
-            const inputElement = document.querySelector('input[name="query"]');
-            const query = inputElement.value;
-            handleSearchMovies(query);
-          }}
-        >
-          Search
-        </button>
-      </div> */}
-
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
@@ -132,6 +126,7 @@ export function Content() {
             <button onClick={() => handleCreateFavorite(currentMovie)}>Add to Favorites</button>
           )}
         </>
+        {isFavoriteAddedMessageVisible && <div className="favorite-added-message">Favorite added</div>}
       </Modal>
     </div>
   );
