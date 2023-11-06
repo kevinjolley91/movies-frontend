@@ -6,13 +6,13 @@ export function Header() {
 
   return loggedIn ? (
     <nav className="navbar">
-      <Link to="/">All Movies</Link> |<Link to="favorites/index"> Your Favorites</Link> |{" "}
-      <LogoutLink>Logout</LogoutLink> | <Link to="/about">About</Link>
+      <Link to="/">Home</Link> |<Link to="favorites/index"> Your Favorites</Link> | <LogoutLink>Logout</LogoutLink> |{" "}
+      <Link to="/about">About</Link>
     </nav>
   ) : (
     <nav className="navbar">
-      <Link to="/">All Movies</Link> |<Link to="favorites/index"> Your Favorites</Link> |{" "}
-      <Link to="/signup"> Signup</Link> |<Link to="/login"> Login</Link>| <Link to="/about">About</Link>
+      <Link to="/">Home</Link> |<Link to="favorites/index"> Your Favorites</Link> | <Link to="/signup"> Signup</Link> |
+      <Link to="/login"> Login</Link>| <Link to="/about">About</Link>
     </nav>
   );
 }

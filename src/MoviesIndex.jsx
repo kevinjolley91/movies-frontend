@@ -3,6 +3,22 @@
 export function MoviesIndex(props) {
   return (
     <div id="movies-index">
+      {props.showSearch && (
+        <div>
+          <h1>Search:</h1>
+          <input name="query" type="text" />
+          <button
+            onClick={() => {
+              const inputElement = document.querySelector('input[name="query"]');
+              const query = inputElement.value;
+              props.onSearchMovies(query);
+            }}
+          >
+            Search
+          </button>
+        </div>
+      )}
+      <br />
       <div className="card-deck">
         {props.movies.map((movie) => (
           <div key={movie.id} className="card">

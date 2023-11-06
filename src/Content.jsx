@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { MoviesIndex } from "./MoviesIndex";
@@ -14,6 +15,8 @@ export function Content() {
   const [isMoviesShowVisible, setIsMoviesShowVisibile] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
   const [favorites, setFavorites] = useState([]);
+  const [showSearch] = useState(true);
+  const [isFavoriteAddedMessageVisible, setIsFavoriteAddedMessageVisible] = useState(false);
 
   const handleIndexMovies = () => {
     console.log("handleIndexMovies");
@@ -86,7 +89,7 @@ export function Content() {
 
   return (
     <div className="container" id="content-component">
-      <div>
+      {/* <div>
         <h1>Search:</h1>
         <input name="query" type="text" />
         <button
@@ -98,13 +101,23 @@ export function Content() {
         >
           Search
         </button>
-      </div>
-      <br />
+      </div> */}
+
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<MoviesIndex movies={movies} onShowMovie={handleShowMovie} />} />
+        <Route
+          path="/"
+          element={
+            <MoviesIndex
+              movies={movies}
+              onShowMovie={handleShowMovie}
+              showSearch={showSearch}
+              onSearchMovies={handleSearchMovies}
+            />
+          }
+        />
         <Route
           path="/favorites/index"
           element={<FavoritesIndex favorites={favorites} onShowMovie={handleShowMovie} />}
