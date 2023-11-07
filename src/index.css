@@ -27,3 +27,10 @@ html {
   transform: scale(1.05);
   box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
 }
+
+.head-tag {
+  text-align: center;
+  color: rgb(0, 130, 113);
+  font-style: italic;
+  font-weight: bold;
+}
