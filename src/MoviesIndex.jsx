@@ -1,16 +1,25 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { useRef } from "react";
 
 export function MoviesIndex(props) {
+  const inputRef = useRef(null);
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      const query = inputRef.current.value;
+      props.onSearchMovies(query);
+    }
+  };
+
   return (
     <div id="movies-index">
       {props.showSearch && (
         <div>
           <h1>Search:</h1>
-          <input name="query" type="text" />
+          <input name="query" type="text" ref={inputRef} onKeyPress={handleKeyPress} />
           <button
             onClick={() => {
-              const inputElement = document.querySelector('input[name="query"]');
-              const query = inputElement.value;
+              const query = inputRef.current.value;
               props.onSearchMovies(query);
             }}
           >
