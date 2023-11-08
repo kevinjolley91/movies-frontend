@@ -11,7 +11,7 @@ export function Header() {
         <Link to="/">Home</Link> |<Link to="favorites/index"> Your Favorites</Link> | <LogoutLink>Logout</LogoutLink> |{" "}
         <Link to="/about">About</Link>
       </nav>
-      <h1 style={{ fontSize: "5rem" }}>What to Watch</h1>
+      <h1 style={{ fontSize: "6rem" }}>What to Watch</h1>
     </div>
   ) : (
     <div className="head-tag">
@@ -19,7 +19,7 @@ export function Header() {
         <Link to="/">Home</Link> |<Link to="favorites/index"> Your Favorites</Link> | <Link to="/signup"> Signup</Link>{" "}
         |<Link to="/login"> Login</Link>| <Link to="/about">About</Link>
       </nav>
-      <h1 style={{ fontSize: "5rem" }}>What to Watch</h1>
+      <h1 style={{ fontSize: "6rem" }}>What to Watch</h1>
     </div>
   );
 }
