@@ -12,10 +12,12 @@ A React application that allows users to search for and save their favorite movi
 ## Setup:
 - Clone the repo
 - In the terminal, go to the root directory of the cloned repo
-  "cd movies-frontend"
 - Install the dependencies
-  "npm install"
 - Start the server
+  ```
+  "cd movies-frontend"
+  "npm install"
   "npm run dev"
+  ```
 
 
