@@ -1,3 +1,4 @@
-# README
+# What to Watch Frontend
+A React application that allows users to search for and save their favorite movies.
 
-This frontend is tied to a Ruby on Rails backend. I'm currently in the process of getting api calls for movies and movie info and rendering the data that is returned. I would like to set the home page as the latest trending movies and implement a search function.
+![image](https://github.com/kevinjolley91/movies-frontend/assets/137746914/997201ae-9f57-4152-8b4f-455bc28f2919)
