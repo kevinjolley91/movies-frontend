@@ -7,5 +7,13 @@ A React application that allows users to search for and save their favorite movi
 ![image](https://github.com/kevinjolley91/movies-frontend/assets/137746914/ff04ffd7-974c-40a1-a8b4-354bf093757c)
 
 ## Dependencies:
-<link_to="https://github.com/kevinjolley91/movies-api">What to Watch Backend</link>
+[What to Watch Backend](https://github.com/kevinjolley91/movies-api) is the counterpart Rails application.
+
+## Setup:
+- Clone the repo
+- In the terminal, go to the root directory of the cloned repo, install the dependencies, and start the server:
+
+cd movies-frontend
+npm install
+npm run dev
 
