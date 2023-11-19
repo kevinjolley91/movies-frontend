@@ -20,4 +20,7 @@ A React application that allows users to search for and save their favorite movi
   "npm run dev"
   ```
 
+## Integrations:
+- The Movie Database is used for the library of movies
+- Pigeon Maps for the map on the About page
 
