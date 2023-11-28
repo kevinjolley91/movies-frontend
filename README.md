@@ -1,7 +1,6 @@
 # What to Watch Frontend
 A React application that allows users to search for and save their favorite movies.
-
-
+<br />
 ![image](https://github.com/kevinjolley91/movies-frontend/assets/137746914/997201ae-9f57-4152-8b4f-455bc28f2919)
 
 ![image](https://github.com/kevinjolley91/movies-frontend/assets/137746914/288a0291-ff29-4009-84c7-e152024ae8a6)
