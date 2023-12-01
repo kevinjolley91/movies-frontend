@@ -18,6 +18,7 @@ export function MoviesIndex(props) {
           <h1>Search:</h1>
           <input name="query" type="text" ref={inputRef} onKeyPress={handleKeyPress} />
           <button
+            className="btn btn-primary"
             onClick={() => {
               const query = inputRef.current.value;
               props.onSearchMovies(query);
@@ -40,7 +41,9 @@ export function MoviesIndex(props) {
             />
             <div className="card-body">
               <h4 className="card-title">{movie.title}</h4>
-              <button onClick={() => props.onShowMovie(movie)}>More info</button>
+              <button className="btn btn-primary" onClick={() => props.onShowMovie(movie)}>
+                More info
+              </button>
             </div>
           </div>
         ))}

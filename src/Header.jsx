@@ -7,7 +7,7 @@ export function Header() {
 
   return loggedIn ? (
     <div className="head-tag">
-      <nav className="navbar">
+      <nav className="bg-light">
         <Link to="/">Home</Link> |<Link to="favorites/index"> Your Favorites</Link> | <LogoutLink>Logout</LogoutLink> |{" "}
         <Link to="/about">About</Link>
       </nav>

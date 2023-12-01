@@ -15,7 +15,9 @@ export function FavoritesIndex(props) {
             />
             <div className="card-body">
               <h2 className="card-title">{favorite.title}</h2>
-              <button onClick={() => props.onShowMovie(favorite)}>More info</button>
+              <button className="btn btn-primary" onClick={() => props.onShowMovie(favorite)}>
+                More info
+              </button>
             </div>
           </div>
         ))}
