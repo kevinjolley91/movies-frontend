@@ -121,9 +121,13 @@ export function Content() {
         <>
           <MoviesShow movie={currentMovie} />
           {favorites.find((favorite) => favorite.movie_id === currentMovie.movie_id) ? (
-            <button onClick={() => handleRemoveFavorite(currentMovie.id)}>Remove from Favorites</button>
+            <button className="btn btn-primary" onClick={() => handleRemoveFavorite(currentMovie.id)}>
+              Remove from Favorites
+            </button>
           ) : (
-            <button onClick={() => handleCreateFavorite(currentMovie)}>Add to Favorites</button>
+            <button className="btn btn-primary" onClick={() => handleCreateFavorite(currentMovie)}>
+              Add to Favorites
+            </button>
           )}
         </>
         {isFavoriteAddedMessageVisible && <div className="favorite-added-message">Favorite added</div>}

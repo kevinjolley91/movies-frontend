@@ -4,8 +4,8 @@ import { Map, Marker } from "pigeon-maps";
 export function About() {
   return (
     <div>
-      <h1>About What to Watch</h1>
-      <h2>
+      <h1 className="text-6xl">About What to Watch</h1>
+      <h2 className="text-4xl">
         We built What to Watch, so you don't have to wonder anymore. We're based in a small town shown on the map.
         There's practically nothing to do here, so we binge movies to fill our time. We know what to watch.
       </h2>
