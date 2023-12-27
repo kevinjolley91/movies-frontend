@@ -44,9 +44,9 @@ export function Content() {
 
   const showFavoriteAddedMessage = () => {
     setIsFavoriteAddedMessageVisible(true);
-    setTimeout(() => {
-      setIsFavoriteAddedMessageVisible(false);
-    }, 3000);
+    // setTimeout(() => {
+    //   setIsFavoriteAddedMessageVisible(false);
+    // }, 3000);
   };
 
   const handleCreateFavorite = (params) => {

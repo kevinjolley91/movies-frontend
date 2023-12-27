@@ -15,9 +15,9 @@ export function Header() {
     </div>
   ) : (
     <div className="head-tag">
-      <nav className="navbar">
-        <Link to="/">Home</Link> |<Link to="favorites/index"> Your Favorites</Link> | <Link to="/signup"> Signup</Link>{" "}
-        |<Link to="/login"> Login</Link>| <Link to="/about">About</Link>
+      <nav className="bg-light">
+        <Link to="/">Home</Link> | <Link to="/signup"> Signup</Link> |<Link to="/login"> Login</Link> |{" "}
+        <Link to="/about">About</Link>
       </nav>
       <h1 style={{ fontSize: "6rem" }}>What to Watch</h1>
     </div>
