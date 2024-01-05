@@ -13,6 +13,7 @@ A React application that allows users to search for and save their favorite movi
 
 ## Setup:
 - Clone the repo
+- Obtain API key from TMDb, save as environment variable called "MOVIE_API_KEY"
 - In the terminal, go to the root directory of the cloned repo
 - Install the dependencies
 - Start the server
